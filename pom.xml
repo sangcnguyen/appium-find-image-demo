@@ -6,17 +6,48 @@
 
     <groupId>io.sprynkl</groupId>
     <artifactId>appium-image-recognition</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-</version>
+
+    <developers>
+        <developer>
+            <email>ngcongsang@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
+        <junit.version>4.12</junit.version>
         <appium.version>7.2.0</appium.version>
         <selenium.version>3.141.59</selenium.version>
-        <sikulix.version>1.1.2</sikulix.version>
+        <sikulix.version>1.1.4-SNAPSHOT</sikulix.version>
         <java.version>1.8</java.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
+        <maven-assembly.version>3.1.1</maven-assembly.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <!-- OSSRH: com.sikulix -->
+            <name>com.sikulix</name>
+            <id>com.sikulix</id>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -43,6 +74,34 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+            </plugin>
+            <!-- Maven Assembly Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly.version}</version>
+                <configuration>
+                    <!-- get all project dependencies -->
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <!-- MainClass in mainfest make a executable jar -->
+                    <archive>
+                        <manifest>
+                            <mainClass>io.sprynkl.core.ImageRecognition</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <!-- bind to the packaging phase -->
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

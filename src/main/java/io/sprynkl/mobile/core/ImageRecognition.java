@@ -1,3 +1,5 @@
+package io.sprynkl.mobile.core;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
@@ -29,7 +31,6 @@ public class ImageRecognition {
     public ImageRecognition(AppiumDriver mobileDriver) {
         this.mobileDriver = mobileDriver;
         Settings.MinSimilarity = DEFAULT_MIN_SIMILARITY;
-        System.out.println(Settings.MinSimilarity);
     }
 
     /**
