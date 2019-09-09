@@ -46,10 +46,11 @@ public class SprynklImageRecognitionDemo {
     }
 
     @Test
-    public void clickGetStartedButton() {
+    public void clickGetStartedButton() throws InterruptedException {
         String getstartedBtn = imgDir + "/get-started.png";
 
         imageRecognition.waitUntilImageExists(getstartedBtn, 30);
         imageRecognition.tapByImage(getstartedBtn);
+        Thread.sleep(5000);
     }
 }
