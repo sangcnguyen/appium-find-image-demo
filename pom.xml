@@ -21,7 +21,7 @@
         <sikulix.version>1.1.4-SNAPSHOT</sikulix.version>
         <java.version>1.8</java.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
-        <maven-assembly.version>3.1.1</maven-assembly.version>
+        <maven-assembly.version>3.3.0</maven-assembly.version>
     </properties>
 
     <repositories>
